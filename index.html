@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>机械结构动图检索</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Mechanical Linkage Explorer</p>
+        <h1>机械结构连接方式动图检索</h1>
+        <p class="subtitle">
+          输入机构名称，例如“曲柄摇杆机构”“曲柄滑块机构”“凸轮机构”，程序会尝试联网搜索并缓存可播放的 GIF 动图。
+        </p>
+      </section>
+
+      <section class="panel">
+        <form id="search-form" class="search-form">
+          <input
+            id="query-input"
+            name="query"
+            type="text"
+            placeholder="请输入机械结构名称"
+            autocomplete="off"
+            required
+          />
+          <button id="submit-button" type="submit">搜索并显示动画</button>
+        </form>
+
+        <div id="status" class="status">准备就绪，输入关键词开始。</div>
+
+        <div id="result" class="result hidden">
+          <div class="result-head">
+            <h2 id="result-title"></h2>
+            <span id="cache-badge" class="badge"></span>
+          </div>
+          <div class="preview-card">
+            <img id="preview-image" alt="机械结构动图预览" />
+          </div>
+          <a id="source-link" href="#" target="_blank" rel="noreferrer noopener">查看原始来源</a>
+        </div>
+      </section>
+
+      <section class="examples">
+        <h3>建议先试这些关键词</h3>
+        <div class="chips">
+          <button class="chip" type="button" data-query="曲柄摇杆机构">曲柄摇杆机构</button>
+          <button class="chip" type="button" data-query="曲柄滑块机构">曲柄滑块机构</button>
+          <button class="chip" type="button" data-query="槽轮机构">槽轮机构</button>
+          <button class="chip" type="button" data-query="凸轮机构">凸轮机构</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
